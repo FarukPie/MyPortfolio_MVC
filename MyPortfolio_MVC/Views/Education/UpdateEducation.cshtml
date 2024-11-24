@@ -1,0 +1,38 @@
+﻿@model MyPortfolio_MVC.Models.TblEducations
+@{
+    ViewBag.Title = "UpdateEducation";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+}
+
+<h2>Egitim Guncelleme Sayfası</h2>
+<form method="post">
+    @Html.HiddenFor(X=>X.Educationid) 
+    <label>Okul Adı</label>
+    @Html.TextBoxFor(x => x.SchoolName, new { @class = "form-control" })
+    <br />
+    <label>Bolum Adı</label>
+    @Html.TextBoxFor(x => x.Department, new { @class = "form-control" })
+    <br />
+    <label>Acıklama Adı</label>
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    <label>Baslama Tarihi</label>
+    <input type="date" name="StartDate" value="@Model.StartDate"  class=" form-control" />
+    <br />
+    <label>Bitis Tarihi<span><strong>(Eger Devam Ediyorsa Bos Bırakın)</strong></span></label>
+    <input type="date" name="EndDate" value="@Model.EndDate" class="form-control" />
+    <br />
+    <label>Derece<span><strong>(Lisans, Önlisans ,YüksekLisans)</strong></span></label>
+    <select name="Degree" class="form-control">
+        <option disabled>Secımızını Yapın</option>
+        <option value="Önlisans" @(Model.Degree=="ÖnLisans"? "selected":"")>Önlisans</option>
+        <option value="Lisans" @(Model.Degree=="Lisans"? "selected":"")>Lisans</option>
+        <option value="YüksekLisans" @(Model.Degree=="YüksekLisans"? "selected":"")>YüksekLisans</option>
+    </select>
+    <br />
+    <button class="btn btn-outline-primary">Güncelle</button>
+    <br />
+
+
+</form>
+

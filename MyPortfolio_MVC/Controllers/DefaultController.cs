@@ -1,4 +1,5 @@
-﻿using MyPortfolio_MVC.Models;
+﻿using Microsoft.Ajax.Utilities;
+using MyPortfolio_MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,27 @@ namespace MyPortfolio_MVC.Controllers
 
             var value=db.TblProjects.ToList();
             return PartialView(value);
+        }
+
+        [HttpGet]
+        public PartialViewResult SendMessage()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        public ActionResult SendMessage(TblMessages model)
+        {
+            model.IsRead = false;
+            db.TblMessages.Add(model);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+
+        public PartialViewResult DefaultAbout()
+        {
+            var values=db.TblAbouts.ToList();
+            return PartialView(values);
         }
     }
 }

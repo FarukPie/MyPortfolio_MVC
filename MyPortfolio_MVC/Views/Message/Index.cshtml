@@ -27,9 +27,9 @@
             <th>@count</th>
             <th>@item.Name</th>
             <th>@item.Email</th>
-            <th>@item.Subject</th>
+            <th>@item.Subject</th>G
             <td><a href="/Message/DeleteMessage/@item.Messageid" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Message/MessageDetail/@item.Messageid"  class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <td><a href="/Message/MessageDetail/@item.Messageid"  class="btn btn-outline-info" >
  Mesajı Aç
 </a></td>
         </tr>
@@ -37,4 +37,3 @@
 
 </table>
 
-@Html.Action("MessageDetail")

@@ -9,18 +9,28 @@ namespace MyPortfolio_MVC.Controllers
 {
     public class MessageController : Controller
     {
-       myProfileEntities db=new myProfileEntities();
+        myProfileEntities db = new myProfileEntities();
         public ActionResult Index()
         {
-            var value=db.TblMessages.Where(m=>m.IsRead==false).ToList();
+            var value = db.TblMessages.Where(m => m.IsRead == false).ToList();
             return View(value);
         }
-        public PartialViewResult MessageDetail(int id)
+        public ActionResult MessageDetail(int id)
         {
-            var value = db.TblMessages.Find(id);    
+
+            var value = db.TblMessages.Find(id);
             value.IsRead = true;
             db.SaveChanges();
-            return PartialView();
+            return View(value);
+        }
+        [HttpPost]
+        public ActionResult MakeMessageRead(int id)
+        {
+            var value = db.TblMessages.Find(id);
+            value.IsRead = true;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
     }
 }
